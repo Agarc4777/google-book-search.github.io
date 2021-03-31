@@ -2,7 +2,9 @@ import React from "react";
 
 function Results(props) {
     return (
-        <div></div>
+        <div>
+            <ul>{}</ul>
+        </div>
     );
 }
 
