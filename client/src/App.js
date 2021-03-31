@@ -11,7 +11,6 @@ function App() {
           <Search />
         </Route>
         <Route exact path="/books/:id">
-          <Detail />
         </Route>
       </Switch>
     </div>
