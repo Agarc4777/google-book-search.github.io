@@ -1,11 +1,17 @@
-import React from 'react';
+import react, { useState} from "react";
+import results from "./components/results";
+import API from "./utils/API";
 
 function Search() {
-    return (
-        <div>
+    const [books, setBooks] = useState([])
+    const [formObject, setFormObject] = useState({})
 
-        </div>
-    )
-};
+    useEffect(() => {
+        searchBooks()
 
-export default Search;
+    }, [])
+
+    function searchBooks() {
+        API.
+    }
+}

@@ -1,13 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-import Saved from './pages/saved';
-import Search from './pages/search';
+import React from "react";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      
+    <Router>
+    <div>
+      <Nav />
+      <Switch>
+        <Route exact path={["/", "/books"]}>
+          <Books />
+        </Route>
+        <Route exact path="/books/:id">
+          <Detail />
+        </Route>
+        <Route>
+          <NoMatch />
+        </Route>
+      </Switch>
     </div>
+  </Router>
   );
 }
 
