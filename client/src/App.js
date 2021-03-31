@@ -8,7 +8,7 @@ function App() {
       <Nav />
       <Switch>
         <Route exact path={["/", "/books"]}>
-          <Books />
+          <Search />
         </Route>
         <Route exact path="/books/:id">
           <Detail />
