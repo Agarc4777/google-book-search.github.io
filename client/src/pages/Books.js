@@ -36,15 +36,15 @@ function Books() {
             <Jumbotron>
               <h1>Books On My List</h1>
             </Jumbotron>
+            <Link to={"/"}>Return to search page
+            </Link>
             {books.length ? (
               <List>
                 {books.map(book => (
                   <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
                       <strong>
                         {book.title} by {book.author}
                       </strong>
-                    </Link>
                     <DeleteBtn onClick={() => deleteBook(book._id)} />
                   </ListItem>
                 ))}
@@ -57,6 +57,5 @@ function Books() {
       </Container>
     );
   }
-
 
 export default Books;

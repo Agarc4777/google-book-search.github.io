@@ -30,18 +30,17 @@ function Books() {
         .catch(err => console.log(err));
     }
   };
-  // function handleFormSubmit(event) {
-  //   event.preventDefault();
-  //   if (formObject.title) {
-  //     API.saveBook({
-  //       title: formObject.title,
-  //       author: formObject.author,
-  //       synopsis: formObject.synopsis
-  //     })
-  //       .then(res => loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
+  function saveBook(book) {
+    if (formObject.title) {
+      API.saveBook({
+        title: book.volumeInfo.title,
+        authors: book.volumeInfo.authors.join(','),
+        synopsis: book.volumeInfo.description,
+      })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
+  }
   
     return (
       <Container fluid>
@@ -50,6 +49,8 @@ function Books() {
             <Jumbotron>
               <h1>What Books Should I Read?</h1>
             </Jumbotron>
+             <Link to={"/books/"}>Save Books
+            </Link>
             <form>
               <Input
                 onChange={handleInputChange}
@@ -60,7 +61,7 @@ function Books() {
                 disabled={!(formObject.title)}
                 onClick={handleFormSubmit}
               >
-                Submit Book
+                Search Book
               </FormBtn>
             </form>
           </Col>
@@ -70,13 +71,11 @@ function Books() {
             {books.length ? (
               <List>
                 {books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+                  <ListItem key={book.id}>
                       <strong>
-                        {book.title} by {book.author}
+                        {book.volumeInfo.title} by {book.volumeInfo.authors}
                       </strong>
-                    </Link>
-                    {/* <DeleteBtn onClick={() => deleteBook(book._id)} /> */}
+                    <button onClick={() => saveBook(book)}>Save</button>
                   </ListItem>
                 ))}
               </List>
