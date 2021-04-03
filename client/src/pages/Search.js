@@ -34,7 +34,7 @@ function Books() {
     if (formObject.title) {
       API.saveBook({
         title: book.volumeInfo.title,
-        authors: book.volumeInfo.authors.join(','),
+        authors: book.volumeInfo.authors.join(),
         synopsis: book.volumeInfo.description,
       })
         .then(res => console.log(res))
